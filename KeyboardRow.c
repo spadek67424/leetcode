@@ -1,8 +1,8 @@
 class Solution {
 public:
-    string a1="asdfghjkl";
-    string a2="qwertyuiop";
-    string a3="zxcvbnm";
+    string a1="asdfghjklASDFGHJKL";
+    string a2="qwertyuiopQWERTYUIOP";
+    string a3="zxcvbnmZXCVBNM";
     string temp,temp2;
     vector<string> re;
     int flag1=0,flag2=0,flag3=0;
