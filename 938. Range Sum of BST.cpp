@@ -9,21 +9,19 @@
  */
 class Solution {
 public:
+    int ans=0;
     int rangeSumBST(TreeNode* root, int L, int R) {
-        int sum=0;
         if(root!=NULL){
-            int sum1=rangeSumBST(root->left, L, R);
-            int sum2=rangeSumBST(root->right, L, R);
             if(root->val<=R && root->val>=L){
-                return sum1+sum2+root->val;
+                ans+=root->val;
             }
-            else{
-                return sum1+sum2;
+            if(root->val>L){
+                rangeSumBST(root->left,L,R);
+            }
+            if(root->val<R){
+                rangeSumBST(root->right,L,R);
             }
         }
-        else{
-            return 0;
-        }
-    
+        return ans;
     }
 };
