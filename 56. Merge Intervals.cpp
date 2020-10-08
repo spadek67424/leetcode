@@ -1,26 +1,26 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        sort(intervals.begin(),intervals.end(),[](const vector<int> &a, const vector<int> &b){ return a[1] < b[1];});
-        
+        sort(intervals.begin(),intervals.end(),[](const vector<int> &a, const vector<int> &b){ return a[0] < b[0];});
         vector<vector<int>> output;
         vector<vector<int>>::iterator iter;
-        for(iter=intervals.begin();iter!=intervals.end()-1;iter++)
+        for(iter=intervals.begin();iter!=intervals.end();iter++)
         {
-            int right=min((*iter)[1],(*(iter+1))[1]);
-            int left=max((*iter)[0],(*(iter+1))[0]);   
-        
-            if (left<=right)
+            vector<vector<int>>::iterator it=output.end();
+            if (output.empty()||(*(it-1))[1]<(*iter)[0])
             {
-                vector<int> temp{min((*iter)[0],(*(iter+1))[0]),max((*iter)[1],(*(iter+1))[1])};
-                cout<<temp[0]<<endl;
-                cout<<temp[1]<<endl;
+                output.push_back(*iter);   
             }
             else
             {
-                   
+                (*(it-1))[1]=max((*(it-1))[1],(*iter)[1]);    
             }
+            
+            
+            
+            
         }
+        
         return output;
     }
 };
